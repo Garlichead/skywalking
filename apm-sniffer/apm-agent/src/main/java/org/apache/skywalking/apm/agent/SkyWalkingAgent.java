@@ -61,6 +61,7 @@ public class SkyWalkingAgent {
      */
     public static void premain(String agentArgs, Instrumentation instrumentation) throws PluginException {
         final PluginFinder pluginFinder;
+        // init config.
         try {
             SnifferConfigInitializer.initializeCoreConfig(agentArgs);
         } catch (Exception e) {
@@ -73,6 +74,7 @@ public class SkyWalkingAgent {
             LOGGER = LogManager.getLogger(SkyWalkingAgent.class);
         }
 
+        // load plugin.
         try {
             pluginFinder = new PluginFinder(new PluginBootstrap().loadPlugins());
         } catch (AgentPackageNotFoundException ape) {
