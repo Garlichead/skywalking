@@ -61,6 +61,10 @@ public class SnifferConfigInitializer {
      * At the end, `agent.service_name` and `collector.servers` must not be blank.
      */
     public static void initializeCoreConfig(String agentOptions) {
+        // 1 Find environment variables
+        // Environment variables must have the prefix <em>ENV KEY PREFIX</em>
+        // 2 环境变量没有再查找配置文件
+        // 3 检查下必填配置
         AGENT_SETTINGS = new Properties();
         try (final InputStreamReader configFileStream = loadConfig()) {
             AGENT_SETTINGS.load(configFileStream);

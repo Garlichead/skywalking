@@ -38,6 +38,13 @@ public enum ServiceManager {
     private Map<Class, BootService> bootedServices = Collections.emptyMap();
 
     public void boot() {
+        // 1 加载所有 BootService 实现类的实例数组
+        // ServiceManager 基于 SPI (Service Provider Interface) 机制
+        // 在 /resources/META-INF.services/org.skywalking.apm.agent.core.boot.BootService 文件
+        // 定义了所有 BootService 的实现类
+        // 2 调用每个 BootService#prepare() 方法
+        // 3 调用每个 BootService#startup() 方法
+        // 4 调用每个 BootService#onComplete() 方法
         bootedServices = loadAllServices();
 
         prepare();

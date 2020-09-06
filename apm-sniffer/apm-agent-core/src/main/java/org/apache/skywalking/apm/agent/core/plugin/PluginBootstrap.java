@@ -39,6 +39,11 @@ public class PluginBootstrap {
      * @return plugin definition list.
      */
     public List<AbstractClassEnhancePluginDefine> loadPlugins() throws AgentPackageNotFoundException {
+        // 1 初始化 AgentClassLoader
+        // 2 获取插件定义数组
+        // 3 创建类增强插件定义对象数组
+        // 不同插件通过实现 AbstractClassEnhancePluginDefine 抽象类
+        // 定义不同框架的切面，记录调用链路
         AgentClassLoader.initDefaultLoader();
 
         PluginResourcesResolver resolver = new PluginResourcesResolver();
